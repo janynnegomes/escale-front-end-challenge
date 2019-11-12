@@ -10,10 +10,12 @@ import { TodoListModule } from './todo-list.module';
 })
 export class TodoListComponent implements OnInit {
 
-  tasks : any;  
+  tasks : any; 
+  remaining: number; 
 
   constructor() {
     this.tasks = [];
+    this.remaining=0;
    }
 
   ngOnInit() {
@@ -27,10 +29,12 @@ export class TodoListComponent implements OnInit {
       if(form.value.task.trim().length > 0)  
       {
         // Adds new task to list
-        this.tasks.push({text: form.value.task.trim()});
+        this.tasks.push({text: form.value.task.trim(), marked:false});
         
         // Clear input
         form.reset();
+
+        this.calculateRemaining();
       }
      }
 
@@ -38,7 +42,12 @@ export class TodoListComponent implements OnInit {
     
     task.marked = !task.marked;
 
+    this.calculateRemaining();
     console.log(event.target.value);
+  }
+
+  calculateRemaining = ()=>{
+    this.remaining = this.tasks.filter(t=> {return t.marked === false }).length;
   }
   }
 
