@@ -10,7 +10,7 @@ import { TodoListModule } from './todo-list.module';
 })
 export class TodoListComponent implements OnInit {
 
-  tasks : any;
+  tasks : any;  
 
   constructor() {
     this.tasks = [];
@@ -27,17 +27,19 @@ export class TodoListComponent implements OnInit {
       if(form.value.task.trim().length > 0)  
       {
         // Adds new task to list
-        this.tasks.push(form.value.task.trim());
+        this.tasks.push({text: form.value.task.trim()});
         
         // Clear input
         form.reset();
       }
      }
 
-  onClick = (event)=>{
+  onClick = (event, task)=>{
+    
+    task.marked = !task.marked;
+
     console.log(event.target.value);
   }
-
   }
 
 
