@@ -1,7 +1,7 @@
 # Mylist
 
 ### Task 
-Using React 16, create a "todo list" component. The component should be the default export (use export defautt). 
+~~Using React 16,~~ create a "todo list" component. The component should be the default export (use export defautt). 
 
 ## Requirements: 
 
